@@ -1,22 +1,113 @@
-html {
-  font-size: 14px;
-}
+/* ===== THEME BASE (DO NOT TOUCH) ===== */
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+:root {
+    --navbar-bg: #000;
+    --sidebar-bg: #000;
+    --accent: #000;
+    --hover: #000;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #f5f6fa;
 }
+
+.navbar {
+    background-color: var(--navbar-bg) !important;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    min-height: 100vh;
+}
+
+    .sidebar .nav-link {
+        color: #e5e7eb;
+        border-radius: 6px;
+        margin-bottom: 4px;
+    }
+
+        .sidebar .nav-link:hover {
+            background-color: var(--hover);
+            color: #fff;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+.main-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/*-----------THEMES----------------*/
+/* ===== THEME 1: Charcoal + Gold ===== */
+/* :root {
+    --navbar-bg: #111111;
+    --sidebar-bg: #1a1a1a;
+    --accent: #d4af37;
+    --hover: #333333;
+}
+
+/* ===== THEME 2: Dark Teal ===== */
+:root {
+    --navbar-bg: #003b3f;
+    --sidebar-bg: #022c2f;
+    --accent: #0ea5a4;
+    --hover: #045d63;
+}
+
+/* ===== THEME 3: Indigo ===== */
+/*
+:root {
+    --navbar-bg: #1e1b4b;
+    --sidebar-bg: #111827;
+    --accent: #6366f1;
+    --hover: #312e81;
+}
+*/
+
+/* ===== THEME 4: Emerald ===== */
+/*
+:root {
+    --navbar-bg: #064e3b;
+    --sidebar-bg: #022c22;
+    --accent: #10b981;
+    --hover: #065f46;
+}
+*/
+
+/* ===== THEME 5: Midnight Blue ===== */
+/*
+:root {
+    --navbar-bg: #0f172a;
+    --sidebar-bg: #020617;
+    --accent: #3b82f6;
+    --hover: #1e293b;
+}
+*/
