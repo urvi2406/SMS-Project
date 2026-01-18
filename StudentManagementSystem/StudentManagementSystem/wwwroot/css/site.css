@@ -15,6 +15,11 @@ body {
     background-color: var(--navbar-bg) !important;
 }
 
+.nav-link.active {
+    background-color: #6b1f2a; /* burgundy / cherry */
+    color: #fff;
+    font-weight: 600;
+}
 .sidebar {
     background-color: var(--sidebar-bg);
     min-height: 100vh;

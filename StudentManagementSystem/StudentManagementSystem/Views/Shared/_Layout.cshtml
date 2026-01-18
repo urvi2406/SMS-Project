@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,22 +31,46 @@
             <div class="col-md-2 sidebar p-0">
                 <ul class="nav flex-column nav-pills p-3 gap-1">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a>
+                        <a class="nav-link @(currentController == "Home" ? "active" : "")"
+                           asp-controller="Home" asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Students" ? "active" : "")"
+                           asp-controller="Students" asp-action="Index">
+                            Students
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Teachers" ? "active" : "")"
+                           asp-controller="Teachers" asp-action="Index">
+                            Teachers
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Courses" ? "active" : "")"
+                           asp-controller="Courses" asp-action="Index">
+                            Courses
+                        </a>
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-user-graduate me-2"></i>Students</a>
+                        <a class="nav-link @(currentController == "Exams" ? "active" : "")"
+                           asp-controller="Exams" asp-action="Index">
+                            Exams
+                        </a>
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-chalkboard-teacher me-2"></i>Teachers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-book me-2"></i>Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-file-pen me-2"></i>Exams</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-square-poll-vertical me-2"></i>Results</a>
+                        <a class="nav-link @(currentController == "Results" ? "active" : "")"
+                           asp-controller="Results" asp-action="Index">
+                            Results
+                        </a>
                     </li>
                 </ul>
             </div>
