@@ -12,10 +12,13 @@ namespace StudentManagementSystem.Models
         [StringLength(100)]
         public string Qualification { get; set; }
 
+        [StringLength(100)]
+        public string Department { get; set; }
+
         public int Experience { get; set; }
 
-        [StringLength(500)]
-        public string Photo { get; set; }
+        [StringLength(1000)]
+        public string? Photo { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

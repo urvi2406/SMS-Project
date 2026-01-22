@@ -68,5 +68,40 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
+
+        //default Values CreatedAt
+        modelBuilder.Entity<User>()
+        .Property(u => u.CreatedAt)
+        .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Student>()
+    .Property(s => s.CreatedAt)
+    .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Teacher>()
+            .Property(t => t.CreatedAt)
+            .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Course>()
+            .Property(c => c.CreatedAt)
+            .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Exam>()
+            .Property(e => e.CreatedAt)
+            .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Result>()
+            .Property(r => r.CreatedAt)
+            .HasDefaultValueSql("GETDATE()");
+
+        //IsActive
+        modelBuilder.Entity<User>()
+        .Property(u => u.IsActive)
+        .HasDefaultValue(true);
+
+        modelBuilder.Entity<Course>()
+        .Property(c => c.IsActive)
+        .HasDefaultValue(true);
+
     }
 }

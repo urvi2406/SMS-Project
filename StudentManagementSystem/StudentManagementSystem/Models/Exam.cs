@@ -12,10 +12,11 @@ namespace StudentManagementSystem.Models
 
         public int CourseId { get; set; }
 
+        public int Semester {  get; set; }
         public DateTime ExamDate { get; set; }
 
         public int MaxMarks { get; set; }
-        public int ObtainedMarks { get; set; }
+        public int MinMarks { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

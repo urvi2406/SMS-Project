@@ -13,10 +13,11 @@ namespace StudentManagementSystem.Models
         [Required, StringLength(20)]
         public string EnrollmentNo { get; set; }
 
+        public int Semester {  get; set; }
         public DateTime DOB { get; set; }
 
-        [StringLength(500)]
-        public string Photo { get; set; }
+        [StringLength(1000)]
+        public string? Photo { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

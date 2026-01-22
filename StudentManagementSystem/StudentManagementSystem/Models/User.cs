@@ -18,10 +18,10 @@ namespace StudentManagementSystem.Models
 
         [Required, StringLength(20)]
         public string Role { get; set; } // Admin / Teacher / Student
-
+        
         public bool IsActive { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } 
         public DateTime? UpdatedAt { get; set; }
 
         // Navigation (1–1)

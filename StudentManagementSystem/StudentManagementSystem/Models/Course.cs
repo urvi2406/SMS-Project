@@ -12,6 +12,10 @@ namespace StudentManagementSystem.Models
 
         public int Duration { get; set; }
 
+        [StringLength(100)]
+        public string Department {  get; set; }
+
+        public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
