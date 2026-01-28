@@ -1,0 +1,217 @@
+﻿/* ===== Auth Pages (Login / Register) ===== */
+
+.auth-body {
+    background-color: #e6fffa;
+    min-height: 100vh;
+}
+
+.auth-card {
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(20, 184, 166, 0.2);
+    overflow: hidden;
+}
+
+.auth-header {
+    background-color: #0d9488;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+    .auth-header .icon-circle {
+        width: 56px;
+        height: 56px;
+        background: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .auth-header i {
+        color: #0d9488;
+    }
+
+.auth-input-group {
+    border: 1.5px solid #5eead4;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    .auth-input-group .input-group-text {
+        background: transparent;
+        border: none;
+        color: #14b8a6;
+        padding-left: 14px;
+    }
+
+.auth-input {
+    border: none;
+    padding: 12px 14px;
+}
+
+    .auth-input:focus {
+        box-shadow: none;
+    }
+
+.auth-input-group:focus-within {
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.25);
+}
+
+.auth-eye {
+    cursor: pointer;
+    color: #14b8a6;
+}
+
+.auth-btn {
+    background-color: #0d9488;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .auth-btn:hover {
+        background-color: #0f766e;
+    }
+/* ===============================
+   REGISTER PAGE FIXES / ADDITIONS
+   =============================== */
+
+/* Header icon circle (register page) */
+.icon-circle {
+    width: 52px;
+    height: 52px;
+    background: #ffffff;
+    color: #0f9688;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 24px;
+}
+
+/* Readonly role input (Student) */
+.readonly-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    font-size: 14px;
+    margin-bottom: 22px;
+    cursor: not-allowed;
+}
+
+/* Slight spacing fix for register form */
+.auth-form label {
+    margin-top: 10px;
+}
+/* ===== AUTH PAGE FIX ===== */
+
+.auth-bg {
+    min-height: 100vh;
+    background: #e6fffa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* MAIN CARD */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* HEADER */
+.auth-header {
+    background: #0d9488;
+    padding: 40px 30px 30px;
+    color: #ffffff;
+}
+
+    .auth-header h2 {
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .auth-header p {
+        margin-bottom: 0;
+        opacity: 0.9;
+    }
+
+/* ICON CIRCLE */
+.auth-icon {
+    width: 64px;
+    height: 64px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+}
+
+    .auth-icon i {
+        font-size: 28px;
+        color: #0d9488;
+    }
+
+/* BODY */
+.auth-body {
+    padding: 30px;
+}
+
+/* INPUT GROUP FIX */
+.input-group-text {
+    background: transparent;
+    border-right: 0;
+}
+
+.form-control {
+    border-left: 0;
+}
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #0d9488;
+    }
+
+/* BUTTON */
+.auth-btn {
+    background: #0d9488;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+    .auth-btn:hover {
+        background: #0f766e;
+    }
+
+/* LINKS */
+.auth-link {
+    color: #0d9488;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .auth-link:hover {
+        text-decoration: underline;
+    }
+
+/* FOOTER */
+.auth-footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #0d9488;
+}
