@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Teacher>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Manage Teachers</h3>
+
+    <a asp-action="Create" class="btn btn-success">
+        Add Teacher
+    </a>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Qualification</th>
+            <th>Department</th>
+            <th>Experience</th>
+            <th class="text-center">Delete</th>
+            <th class="text-center">Edit</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(t.Photo))
+                    {
+                        <img src="@t.Photo"
+                             width="50"
+                             height="50"
+                             class="rounded-circle" />
+                    }
+                </td>
+
+                <td>@t.User?.FullName</td>
+                <td>@t.Qualification</td>
+                <td>@t.Department</td>
+                <td>@t.Experience</td>
+
+                <!-- DELETE -->
+                <td class="text-center">
+                    <a asp-action="Delete"
+                       asp-route-id="@t.TeacherId"
+                       class="text-danger fs-5"
+                       title="Delete">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
+
+                </td>
+
+                <!-- EDIT -->
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@t.TeacherId"
+                       class="btn btn-sm btn-outline-warning me-1">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

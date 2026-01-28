@@ -12,6 +12,9 @@ namespace StudentManagementSystem.Models
         [StringLength(100)]
         public string Qualification { get; set; }
 
+        [StringLength(1000)]
+        public string? Bio { get; set; }
+
         [StringLength(100)]
         public string Department { get; set; }
 

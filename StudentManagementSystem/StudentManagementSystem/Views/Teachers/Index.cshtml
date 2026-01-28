@@ -1,6 +1,87 @@
-﻿@{
+﻿@model List<StudentManagementSystem.Models.Teacher>
+
+@{
     ViewData["Title"] = "Teachers";
 }
+<div class="container-fluid mt-4">
 
-<h2>Teachers</h2>
-<p>UI coming soon...</p>
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Teachers</h3>
+        <a asp-action="Details" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Manage Teachers
+        </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="row g-4">
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var teacher in Model)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="card h-100 shadow-sm border-0 teacher-card">
+
+                        <!-- Photo -->
+                        <div class="text-center pt-4">
+                            @if (!string.IsNullOrEmpty(teacher.Photo))
+                            {
+                                <img src="@Url.Content(teacher.Photo)"
+                                     class="rounded-circle mb-3"
+                                     style="width:90px;height:90px;object-fit:cover;"
+                                     alt="Teacher Photo" />
+                            }
+                            else
+                            {
+                                <img src="~/images/default-user.png"
+                                     class="rounded-circle mb-3"
+                                     style="width:90px;height:90px;object-fit:cover;"
+                                     alt="Default Photo" />
+                            }
+                        </div>
+
+                        <!-- Body -->
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold mb-1">
+                                @teacher.User?.FullName
+                            </h5>
+
+                            <p class="text-muted small mb-2">
+                                @teacher.Qualification
+                            </p>
+
+                            <span class="badge bg-success mb-2">
+                                @teacher.Department
+                            </span>
+
+                            <div class="small text-muted mt-2">
+                                <div>
+                                    <strong>@teacher.Experience</strong> years experience
+                                </div>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(teacher.Bio))
+                            {
+                                <p class="small text-muted mt-2">
+                                    @(teacher.Bio.Length > 80
+                                                            ? teacher.Bio.Substring(0, 80) + "..."
+                                                            : teacher.Bio)
+                                </p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    No teachers found.
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
