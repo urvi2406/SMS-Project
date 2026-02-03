@@ -29,6 +29,6 @@ namespace StudentManagementSystem.Models
         // Navigation
         public User User { get; set; }
 
-        public List<Result> ResultsCreated { get; set; }
+        public List<Result> Results { get; set; } = new();
     }
 }

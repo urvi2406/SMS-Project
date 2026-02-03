@@ -13,17 +13,18 @@ namespace StudentManagementSystem.Models
         public string? Description { get; set; }
 
         public int Duration { get; set; }
+        public int TotalCredits { get; set; }
 
         [StringLength(100)]
-        public string Department {  get; set; }
-        public int TotalCredits { get; set; }
+        public string Department { get; set; }
 
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
         // Navigation
-        public List<Student> Students { get; set; }
-        public List<Exam> Exams { get; set; }
+        public List<Student> Students { get; set; } = new();
+        public List<Exam> Exam { get; set; } = new();
+        public List<Result> Result { get; set; } = new();
     }
 }

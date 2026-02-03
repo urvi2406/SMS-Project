@@ -14,15 +14,21 @@ namespace StudentManagementSystem.Models
 
         public int Semester {  get; set; }
         public DateTime ExamDate { get; set; }
+        [Required, StringLength(50)]
+        public string ExamType { get; set; } // Midterm, Final, Practical
+
+        [Required]
+        public int DurationMinutes { get; set; } // e.g. 120
 
         public int MaxMarks { get; set; }
         public int MinMarks { get; set; }
+        public bool IsPublished { get; set; } = false;
 
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
         // Navigation
         public Course Course { get; set; }
-        public List<Result> Results { get; set; }
+        public List<Result> Result { get; set; } = new();
     }
 }

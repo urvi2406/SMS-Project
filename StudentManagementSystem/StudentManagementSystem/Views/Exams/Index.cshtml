@@ -1,6 +1,96 @@
-﻿@{
-    ViewData["Title"] = "Examss";
+﻿@model IEnumerable<StudentManagementSystem.Models.Exam>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/exam.css" asp-append-version="true" />
 }
 
-<h2>Exams</h2>
-<p>UI coming soon...</p>
+@{
+    ViewData["Title"] = "Examinations";
+}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Examinations</h2>
+        <p class="text-muted mb-0">All scheduled exams by course and semester</p>
+    </div>
+
+    @* Create button only for Admin & Teacher *@
+    @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+    {
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i> Create Exam
+        </a>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No exams available.
+    </div>
+}
+else
+{
+    <div class="exam-grid">
+
+        @foreach (var exam in Model)
+        {
+            <div class="exam-card">
+
+                @* Status badge (hidden from students) *@
+                @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+                {
+                    <span class="exam-status @(exam.IsPublished ? "published" : "draft")">
+                        @(exam.IsPublished ? "Published" : "Draft")
+                    </span>
+                }
+
+                <div class="exam-title">@exam.ExamName</div>
+
+                <div class="exam-course">
+                    @exam.Course.CourseName · Semester @exam.Semester
+                </div>
+
+                <div class="exam-meta">
+                    <span>
+                        <i class="bi bi-calendar-event"></i>
+                        @exam.ExamDate.ToString("dd MMM yyyy")
+                    </span>
+
+                    <span>
+                        <i class="bi bi-clock"></i>
+                        @exam.DurationMinutes mins
+                    </span>
+
+                    <span>
+                        <i class="bi bi-journal-text"></i>
+                        @exam.ExamType
+                    </span>
+
+                    <span>
+                        <i class="bi bi-award"></i>
+                        @exam.MaxMarks Marks
+                    </span>
+                </div>
+
+                <div class="exam-actions">
+                    <a asp-action="Details"
+                       asp-route-id="@exam.ExamId"
+                       class="btn-view">
+                        View Details
+                    </a>
+
+                    @* Edit only for Admin & Teacher *@
+                    @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+                    {
+                        <a asp-action="Edit"
+                           asp-route-id="@exam.ExamId"
+                           class="btn-edit">
+                            Edit
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
