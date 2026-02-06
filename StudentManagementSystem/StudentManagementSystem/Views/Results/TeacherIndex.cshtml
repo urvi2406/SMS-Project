@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentManagementSystem.Models.Exam>
+﻿@model IEnumerable<StudentManagementSystem.Models.Result>
 
 @{
     ViewData["Title"] = "Manage Results";
@@ -24,29 +24,33 @@
 else
 {
     <div class="results-grid">
-        @foreach (var exam in Model)
+        @foreach (var r in Model)
         {
             <div class="result-card">
 
                 <div class="card-header">
-                    <h5>@exam.ExamName</h5>
-                    <span class="course">@exam.Course.CourseName</span>
+                    <h5>@r.Exam.ExamName</h5>
+                    <span class="course">@r.Course.CourseName</span>
                 </div>
 
                 <div class="card-body">
                     <div class="meta">
-                        <span><i class="bi bi-mortarboard"></i> Semester @exam.Semester</span>
-                        <span><i class="bi bi-people"></i> @exam.Result.Count() Students</span>
+                        <span><i class="bi bi-mortarboard"></i> Semester @r.Exam.Semester</span>
+                        <span>
+                            <i class="bi bi-people"></i>
+                            @Model.Count(x => x.ExamId == r.ExamId) Students
+                        </span>
                     </div>
 
-                    <div class="status @(exam.IsPublished ? "published" : "draft")">
-                        @(exam.IsPublished ? "Results Published" : "Draft Results")
+                    <div class="status @(r.Exam != null && r.Exam.IsPublished ? "published" : "draft")">
+                        @(r.Exam != null && r.Exam.IsPublished ? "Results Published" : "Draft Results")
                     </div>
+
                 </div>
 
                 <div class="card-actions">
                     <a asp-action="Details"
-                       asp-route-examId="@exam.ExamId"
+                       asp-route-examId="@r.Exam.ExamId"
                        class="btn-manage">
                         Manage Results
                     </a>

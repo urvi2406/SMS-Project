@@ -45,6 +45,8 @@ namespace StudentManagementSystem.Controllers
         }
         public IActionResult TeacherIndex()
         {
+            /*
+            // ===== ROLE-BASED LOGIC (ENABLE LATER) =====
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (!int.TryParse(userIdString, out int userId))
@@ -63,13 +65,27 @@ namespace StudentManagementSystem.Controllers
             }
 
             var results = _context.Results
-                .Include(r => r.Student)
+                .Include(r => r.Student).ThenInclude(s => s.User)
                 .Include(r => r.Exam)
+                .Include(r => r.Course)
+                .Include(r => r.Teacher)
                 .Where(r => r.TeacherId == teacherId)
                 .ToList();
 
             return View(results);
+            */
+
+            // ===== TEMPORARY: SHOW ALL RESULTS (NO ROLE CHECK) =====
+            var results = _context.Results
+                .Include(r => r.Student).ThenInclude(s => s.User)
+                .Include(r => r.Exam)
+                .Include(r => r.Course)
+                .Include(r => r.Teacher)
+                .ToList();
+
+            return View(results);
         }
+
 
         public IActionResult Manage(int examId)
         {
@@ -86,12 +102,18 @@ namespace StudentManagementSystem.Controllers
 
         public IActionResult AdminIndex()
         {
-            var results = _context.Results
-        .Include(r => r.Student)
-        .Include(r => r.Exam)
-        .ToList();
+          //  if (HttpContext.Session.GetString("Role") != "admin")
+            //    return Unauthorized();
 
-            return View(results ?? new List<Result>());
+            var results = _context.Results
+                .Include(r => r.Student)
+                    .ThenInclude(s => s.User)
+                .Include(r => r.Exam)
+                .Include(r => r.Course)
+                .OrderByDescending(r => r.ResultId)
+                .ToList();
+
+            return View(results);
         }
         public IActionResult ToggleExamPublish(int examId)
         {
